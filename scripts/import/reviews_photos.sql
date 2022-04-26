@@ -1,0 +1,6 @@
+LOAD DATA LOCAL INFILE 'data/reviews_photos.csv'
+INTO TABLE reviews_photos
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;

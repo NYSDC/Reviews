@@ -1,0 +1,1 @@
+CREATE INDEX characteristics_product_id_idx ON characteristics (product_id);
