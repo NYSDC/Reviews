@@ -11,5 +11,5 @@ CREATE TABLE reviews (
   reviewer_name VARCHAR(100),
   reviewer_email VARCHAR(100),
   response VARCHAR(1000) DEFAULT NULL,
-  helpfulness INT DEFAULT 0;
+  helpfulness INT DEFAULT 0
 );

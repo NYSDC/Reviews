@@ -2,9 +2,9 @@ const fs = require('fs');
 const mysql = require('mysql');
 
 const connection = mysql.createConnection({
-  host: '127.0.0.1',
-  user: 'root',
-  password: 'password'
+  host: 'localhost',
+  user: 'student',
+  password: 'student'
 });
 
 connection.query("CREATE DATABASE IF NOT EXISTS neptune");
@@ -12,17 +12,17 @@ connection.query("set global local_infile = 1");
 connection.query("USE neptune");
 
 const DDL_SQLS = [
-  'characteristics.sql',
-  // 'reviews.sql',
-  // 'characteristic_reviews.sql',
-  // 'reviews_photos.sql',
+  //'characteristics.sql',
+  'reviews.sql',
+  //'characteristic_reviews.sql',
+  //'reviews_photos.sql',
 ];
 
 const IMPORT_SQLS = [
-  // 'reviews.sql',
-  // 'characteristic_reviews.sql',
-  // 'reviews_photos.sql',
-  'characteristics.sql',
+  'reviews.sql',
+  //'characteristic_reviews.sql',
+  //'reviews_photos.sql',
+  //'characteristics.sql',
 ];
 
 const CONSTRAINT_SQLS = [
@@ -47,6 +47,6 @@ const execute_script = async (connection, filename) => {
 
 DDL_SQLS.forEach(file => execute_script(connection, `scripts/ddl/${file}`));
 IMPORT_SQLS.forEach(file => execute_script(connection, `scripts/import/${file}`));
-// CONSTRAINT_SQLS.forEach(file => execute_script(connection, `scripts/constraint/${file}`));
+CONSTRAINT_SQLS.forEach(file => execute_script(connection, `scripts/constraint/${file}`));
 
 connection.end();
